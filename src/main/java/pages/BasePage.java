@@ -8,9 +8,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage extends PageGenerator {
 
-    public BasePage(WebDriver driver, WebDriverWait wait) {
-        super(driver, wait);
+    public BasePage(WebDriver driver) {
+        super(driver);
     }
+    WebDriverWait wait = new WebDriverWait(this.driver, 10);
 
     JavascriptExecutor js = (JavascriptExecutor) driver;
 
