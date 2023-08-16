@@ -11,29 +11,68 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+    // ***** Web Elements *****
+    @Description("PC-Tablet kategorisine götüren buton")
     @FindBy(css = "div.o-p-header__bottom [href='/pasaj/bilgisayar-tablet']")
     public WebElement pcTabletCategoryButton;
 
-    @FindBy(css = "[data-ga-name='Pasaj - En İyi Teklifler']")
-    public WebElement bestDealsGenericProductList;
+    // ***** Best Sellers Elements*****
+    @Description("Çok satanlar listesinin ilk ürünü")
+    //@FindBy(css = "[class='m-p-ts__tab-content__item active'] div:nth-child(1) div:nth-child(1) a:nth-child(1)")
+    @FindBy(css = "[class='m-p-ts__tab-content__item active'] div:nth-child(1) div:nth-child(1) a:nth-child(1) [class='swiper-slide swiper-slide-active'] [class='m-p-pc__img']")
+    public WebElement bestSellersFirstProduct;
 
-    @FindBy(css = "[id='9904be54-8ee7-436c-8696-3e56c4467266_tab']")
-    public WebElement bestSellersGenericProductList;
+    @Description("Çok satanlar listesinin ilk ürününün adı")
+    @FindBy(css = "[class='m-p-ts__tab-content__item active'] div:nth-child(1) div:nth-child(1) a:nth-child(1) [class='m-p-pc__title']")
+    public static WebElement bestSellersFirstProductName;
 
+    @Description("Çok satanlar listesinin ilk ürününün fiyatı")
+    @FindBy(css = "[class='m-p-ts__tab-content__item active'] div:nth-child(1) div:nth-child(1) a:nth-child(1) [class='m-p-pc__price m-p-pc__price--secondary m-p-pc__price--dark']")
+    public static WebElement bestSellersFirstProductPrice;
+
+    // ***** Best Deals Elements *****
+    @Description("En iyi teklifler listesinin ilk ürünü")
     @FindBy(css = "[data-ga-name='Pasaj - En İyi Teklifler'] [class='m-p-flex m-p-flex--evenly'] div:nth-child(1) a:nth-child(1)")
-    public WebElement bestDealsFirstProductOfList;
+    public WebElement bestDealsFirstProduct;
 
-    @FindBy(css = "[class='m-p-ts__tab-content__item active'] div:nth-child(1) div:nth-child(1) a:nth-child(1)")
-    public WebElement bestSellersFirstProductOfList;
+    @Description("En iyi teklifler listesinin ilk ürününün adı")
+    @FindBy(css = "[data-ga-name='Pasaj - En İyi Teklifler'] [class='m-p-flex m-p-flex--evenly'] div:nth-child(1) a:nth-child(1) [class='m-p-pc__title']")
+    public static WebElement bestDealsFirstProductName;
 
+
+    // ***** Methods *****
+
+    // ***** Best Sellers Methods *****
     @Description("Çok satanlar listesini görene kadar sayfayı aşağı kaydır.")
-    public void scrollDownUntilVisibleBestSellersList() {
-        scrollDownUntilElementVisible(bestSellersGenericProductList);
+    public void scrollDownUntilVisibleBestSellersFirstProductName() {
+        scrollDownUntilElementVisible(bestSellersFirstProductName);
+    }
+
+    @Description("Çok satanlar listesindeki ilk ürünün adını getir.")
+    public String getBestSellersFirstProductName() {
+        return getText(bestSellersFirstProductName);
+    }
+
+    @Description("Çok satanlar listesindeki ilk ürünün fiyatını getir.")
+    public String getBestSellersFirstProductPrice() {
+        return getText(bestSellersFirstProductPrice);
     }
 
     @Description("Çok satanlar listesindeki ilk ürünün detaylarına git.")
     public void clickToBestSellersFirstProduct() {
-        click(bestSellersFirstProductOfList);
+        clickWithJs(bestSellersFirstProduct);
     }
+
+    // ***** Best Deals Methods *****
+    @Description("En iyi teklifler listesini görene kadar sayfayı aşağı kaydır.")
+    public void scrollDownUntilVisibleBestDealsFirstProductName() {
+        scrollDownUntilElementVisible(bestDealsFirstProductName);
+    }
+
+    @Description("En iyi teklifler listesindeki ilk ürünün detaylarına git.")
+    public void clickToBestDealsFirstProduct() {
+        click(bestDealsFirstProduct);
+    }
+
 }
 
