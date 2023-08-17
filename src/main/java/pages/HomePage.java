@@ -55,7 +55,7 @@ public class HomePage extends BasePage {
 
     @Description("Çok satanlar listesindeki ilk ürünün fiyatını getir.")
     public String getBestSellersFirstProductPrice() {
-        return getText(bestSellersFirstProductPrice);
+        return getText(bestSellersFirstProductPrice).replaceAll("\\sTL.*$","");
     }
 
     @Description("Çok satanlar listesindeki ilk ürünün detaylarına git.")

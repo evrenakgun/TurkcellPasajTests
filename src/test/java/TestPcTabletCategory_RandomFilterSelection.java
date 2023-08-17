@@ -1,8 +1,7 @@
+import org.testng.annotations.Test;
 import pages.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static util.Constants.*;
@@ -11,7 +10,7 @@ public class TestPcTabletCategory_RandomFilterSelection extends BaseTest {
 
     Map<String, String> brandInMemory = new HashMap<>();
 
-
+    @Test
     public void testPcTabletCategory_RandomFilterSelection() {
         page.GetInstance(BasePage.class).goToTurkcellPasaj();
         page.GetInstance(HomePage.class).clickToPcTabletCategory();
@@ -22,6 +21,10 @@ public class TestPcTabletCategory_RandomFilterSelection extends BaseTest {
         brandInMemory.put("brandQuantity", page.GetInstance(PcTabletCategoryPage.class).getBrandQuantity());
 
         page.GetInstance(PcTabletCategoryPage.class).clickToBrand();
+        page.GetInstance(PcTabletCategoryBrandPage.class).waitUntilProductsVisible();
+        page.GetInstance(PcTabletCategoryBrandPage.class).getWebElementListAsString();
+        page.GetInstance(PcTabletCategoryBrandPage.class).verifyProductNamesAfterFilter(brandInMemory.get("brandName"));
+        page.GetInstance(PcTabletCategoryBrandPage.class).verifyQuantityOfProductsAfterFilter(brandInMemory.get("brandQuantity"));
 
     }
 

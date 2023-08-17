@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static util.Constants.BRAND_NAME;
-
 public class PcTabletCategoryPage extends BasePage {
     public PcTabletCategoryPage(WebDriver driver) {
         super(driver);
@@ -22,12 +20,8 @@ public class PcTabletCategoryPage extends BasePage {
     public WebElement searchBox;
 
     @Description("Arama yapılan markanın adı")
-    @FindBy(css = "[class='m-accordion__container m-accordion--scrolled'] [data-val='" + BRAND_NAME + "']")
-    public WebElement brandName;
-
-    @Description("Arama yapılan markanın ürün sayısı")
-    @FindBy(css = "[class='m-accordion__container m-accordion--scrolled'] [data-val='" + BRAND_NAME + "'] label[class='count']")
-    public WebElement brandQuantity;
+    @FindBy(css = "[class='m-accordion__container m-accordion--scrolled'][data-type='brand'] [class='item a-checkbox show-item'] span")
+    public WebElement brandNameAndQuantity;
 
 
     // ***** Methods *****
@@ -43,17 +37,17 @@ public class PcTabletCategoryPage extends BasePage {
 
     @Description("Markanın adını getir.")
     public String getBrandName() {
-        return getText(brandName);
+        return getText(brandNameAndQuantity).replaceAll("\\s*\\(\\d+\\)", "");
     }
 
     @Description("Markanın ürün sayısını getir.")
     public String getBrandQuantity() {
-        return getText(brandQuantity);
+        return getText(brandNameAndQuantity).replaceAll(".*\\((\\d+)\\).*", "$1");
     }
 
     @Description("Marka filtresini seç.")
     public void clickToBrand() {
-        clickWithJs(brandName);
+        clickWithJs(brandNameAndQuantity);
     }
 
 }

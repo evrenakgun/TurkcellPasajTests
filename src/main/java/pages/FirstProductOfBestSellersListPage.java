@@ -42,7 +42,7 @@ public class FirstProductOfBestSellersListPage extends BasePage {
 
     @Description("Ürünlerin fiyatını karşılaştır.")
     public void verifyBestSellersProductPrice(String price) {
-        isTextsContains(price, getText(productPrice));
+        isTextsEquals(price, getText(productPrice));
     }
 
     @Description("Ürünün fiyatını görene kadar sayfayı aşağı kaydır.")

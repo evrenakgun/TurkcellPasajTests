@@ -13,9 +13,6 @@ public class TestFirstProductOfBestSellersList_CheckNameCheckPrice extends BaseT
         page.GetInstance(BasePage.class).goToTurkcellPasaj();
         page.GetInstance(HomePage.class).scrollDownUntilVisibleBestSellersFirstProductName();
 
-        // String productNameInMemory = page.GetInstance(HomePage.class).getBestSellersFirstProductName();
-        // String productPriceInMemory = page.GetInstance(HomePage.class).getBestSellersFirstProductPrice();
-
         productInMemory.put("productName", page.GetInstance(HomePage.class).getBestSellersFirstProductName());
         productInMemory.put("productPrice", page.GetInstance(HomePage.class).getBestSellersFirstProductPrice());
 
