@@ -71,7 +71,12 @@ public class HomePage extends BasePage {
 
     @Description("En iyi teklifler listesindeki ilk ürünün detaylarına git.")
     public void clickToBestDealsFirstProduct() {
-        click(bestDealsFirstProduct);
+        clickWithJs(bestDealsFirstProduct);
+    }
+
+    @Description("PC-Tablet kategorisine git.")
+    public void clickToPcTabletCategory() {
+        clickWithJs(pcTabletCategoryButton);
     }
 
 }

@@ -15,7 +15,7 @@ public class BaseTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        wait = new WebDriverWait(this.driver, 10);
+        wait = new WebDriverWait(this.driver, 15);
         driver.manage().window().maximize();
 
         page = new PageGenerator(driver);

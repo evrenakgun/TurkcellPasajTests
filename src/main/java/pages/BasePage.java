@@ -1,16 +1,26 @@
 package pages;
 
 import com.sun.org.glassfish.gmbal.Description;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.util.Iterator;
+import java.util.Set;
+
+import static util.Constants.FASTLOGIN_PASSWORD;
+import static util.Constants.PHONE_NUMBER;
+
 public class BasePage extends PageGenerator {
+    PageGenerator page;
 
     public BasePage(WebDriver driver) {
         super(driver);
+        page = new PageGenerator(driver);
     }
     WebDriverWait wait = new WebDriverWait(this.driver, 10);
 
@@ -18,6 +28,16 @@ public class BasePage extends PageGenerator {
 
     String baseUrl = "https://www.turkcell.com.tr/pasaj";
 
+    // Asıl pencereyi bir değişkene atadık.
+    public String mainWindow = driver.getWindowHandle();
+    // Açık pencerelerinin kimliklerini barındıran bir Set oluşturduk.
+    public Set<String> windowHandles = driver.getWindowHandles();
+    //Oluşturduğum Set'in içindeki pencerelere erişmesi için bir iterator oluşturduk.
+    public Iterator<String> iterator = windowHandles.iterator();
+    public String titleFastLogin = "Giriş Yap";
+
+
+    // ***** Methods *****
     @Description("Turkcell Pasaj ana sayfasına git.")
     public void goToTurkcellPasaj() {
         driver.get(baseUrl);
@@ -49,7 +69,41 @@ public class BasePage extends PageGenerator {
     }
 
     @Description("Text karşılaştır.(Birbirine eşit mi?)")
-    public void isTextsEquals(String productName1, String productName2) {
-        Assert.assertEquals(productName1.trim(), productName2.trim());
+    public void isTextsEquals(String text1, String text2) {
+        Assert.assertEquals(text1.trim(), text2.trim());
     }
+
+    @Description("Text karşılaştır.(İçinde geçiyor mu?)")
+    public void isTextsContains(String text1, String text2) {
+        Assert.assertTrue(StringUtils.containsIgnoreCase(text1, text2));
+    }
+
+    @Description("Element tıklanabilir olana kadar bekle.")
+    public void isElementClickable(WebElement elementLocation) {
+        wait.until(ExpectedConditions.elementToBeClickable(elementLocation));
+    }
+
+    @Description("Element görünür olana kadar bekle.")
+    public void isElementVisible(WebElement elementLocation) {
+        wait.until(ExpectedConditions.visibilityOf(elementLocation));
+    }
+
+    @Description("HızlıGiriş ile giriş yap.")
+    public void switchToFastLoginWindow_LoginProcess() throws InterruptedException {
+        while (iterator.hasNext()) {
+            String childWindow = iterator.next();
+            driver.switchTo().window(childWindow);
+            if (!mainWindow.equalsIgnoreCase(childWindow)) {
+                page.GetInstance(FastLoginPhoneNumberOrEmailChildWindowPage.class).setPhoneNumberTextField(PHONE_NUMBER);
+                page.GetInstance(FastLoginPhoneNumberOrEmailChildWindowPage.class).tickLoginWithFastLoginPasswordCheckBox();
+                page.GetInstance(FastLoginPhoneNumberOrEmailChildWindowPage.class).clickLoginButton();
+
+                page.GetInstance(FastLoginPasswordChildWindowPage.class).waitUntilPasswordTextFieldClickable();
+                page.GetInstance(FastLoginPasswordChildWindowPage.class).setPasswordTextField(FASTLOGIN_PASSWORD);
+                page.GetInstance(FastLoginPasswordChildWindowPage.class).clickForwardButton();
+            }
+        }
+        driver.switchTo().window(mainWindow);
+    }
+
 }
