@@ -23,7 +23,7 @@ public class TestPcTabletCategory_RandomFilterSelection extends BaseTest {
         page.GetInstance(PcTabletCategoryPage.class).clickToBrand();
         page.GetInstance(PcTabletCategoryBrandPage.class).waitUntilProductsVisible();
         page.GetInstance(PcTabletCategoryBrandPage.class).getWebElementListAsString();
-        page.GetInstance(PcTabletCategoryBrandPage.class).verifyProductNamesAfterFilter(brandInMemory.get("brandName"));
+        page.GetInstance(PcTabletCategoryBrandPage.class).verifyProductNamesAfterFilter(brandInMemory.get("brandName").replaceAll(" ", ""));
         page.GetInstance(PcTabletCategoryBrandPage.class).verifyQuantityOfProductsAfterFilter(brandInMemory.get("brandQuantity"));
 
     }
