@@ -1,6 +1,6 @@
 package pages;
 
-import com.sun.org.glassfish.gmbal.Description;
+import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,15 +11,12 @@ public class FastLoginPhoneNumberOrEmailChildWindowPage extends BasePage {
     }
 
     // ***** Web Elements *****
-    @Description("Telefon numarası text field")
     @FindBy(css = "input#phoneNo")
     public WebElement phoneNumberTextField;
 
-    @Description("HızlıGiriş Şifresi ile Gir checkbox")
     @FindBy(css = "[class='tab__content js-gsm-tab tab__content--active'] [for='loginWithPassword']")
     public WebElement loginWithFastLoginPasswordCheckBox;
 
-    @Description("Login butonu")
     @FindBy(css = "button#webLogin-button")
     public WebElement loginButton;
 

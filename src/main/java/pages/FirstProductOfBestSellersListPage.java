@@ -1,6 +1,6 @@
 package pages;
 
-import com.sun.org.glassfish.gmbal.Description;
+import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,15 +11,12 @@ public class FirstProductOfBestSellersListPage extends BasePage {
     }
 
     // ***** Web Elements *****
-    @Description("Ürün adı")
     @FindBy(css = "[class='product-detail__title-property'] h1")
     public WebElement productName;
 
-    @Description("Ürün fiyatı")
     @FindBy(css = "[class='a-price-radio-b price-radio-cash a-price-radio-b--advantage '] [class='a-price-val']")
     public WebElement productPrice;
 
-    @Description("Ürünün para birimi")
     @FindBy(css = "[class='a-price-radio-b price-radio-cash a-price-radio-b--advantage '] [class='a-price__currency']")
     public WebElement productCurrency;
 

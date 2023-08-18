@@ -13,7 +13,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver", "C:/Users/evrenak/chromedriver.exe");
         driver = new ChromeDriver();
         wait = new WebDriverWait(this.driver, 15);
         driver.manage().window().maximize();

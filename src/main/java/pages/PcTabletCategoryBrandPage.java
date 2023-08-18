@@ -1,6 +1,6 @@
 package pages;
 
-import com.sun.org.glassfish.gmbal.Description;
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +15,6 @@ public class PcTabletCategoryBrandPage extends BasePage {
     }
 
     // ***** Web Elements *****
-    @Description("Filtreleme sonucu sayfada yüklenen ürünlerin sınıfı")
     @FindBy(css = "[class='m-grid-col-4 product'] [class='m-p-pc__title']")
     public WebElement productNames;
 

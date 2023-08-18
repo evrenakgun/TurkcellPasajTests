@@ -1,6 +1,6 @@
 package pages;
 
-import com.sun.org.glassfish.gmbal.Description;
+import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,11 +11,9 @@ public class FastLoginPasswordChildWindowPage extends BasePage {
     }
 
     // ***** Web Elements *****
-    @Description("Password text field")
     @FindBy(css = "input#password")
     public WebElement passwordTextField;
 
-    @Description("Tamam butonu")
     @FindBy(css = "button#password-login-forward-button")
     public WebElement forwardButton;
 

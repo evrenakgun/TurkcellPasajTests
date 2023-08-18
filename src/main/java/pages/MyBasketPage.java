@@ -1,6 +1,6 @@
 package pages;
 
-import com.sun.org.glassfish.gmbal.Description;
+import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,19 +11,15 @@ public class MyBasketPage extends BasePage {
     }
 
     // ***** Web Elements *****
-    @Description("Sepetim yazısı")
     @FindBy(css = "[class='o-basket'] h1:nth-child(1)")
     public WebElement myBasketText;
 
-    @Description("Sepetteki ürün sınıfı")
     @FindBy(css = "[class='m-basket-card basket-line-item '] [class='m-basket-card__title']")
     public WebElement myBasketClass;
 
-    @Description("Ürün adı")
     @FindBy(css = "[class='m-basket-card basket-line-item '] [class='m-basket-card__col m-basket-card__col--product'] :nth-child(2)")
     public WebElement productNameInBasket;
 
-    @Description("Ürün sayısı")
     @FindBy(css = "[class='m-basket-summary__head '] [class='js-summary-amount']")
     public WebElement productQuantity;
 
