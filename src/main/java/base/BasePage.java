@@ -1,4 +1,4 @@
-package pages;
+package base;
 
 import io.qameta.allure.*;
 import org.apache.commons.lang3.StringUtils;
@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import pages.FastLoginPasswordChildWindowPage;
+import pages.FastLoginPhoneNumberOrEmailChildWindowPage;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -39,6 +41,7 @@ public class BasePage extends PageGenerator {
 
     // ***** Methods *****
     @Description("Turkcell Pasaj ana sayfasına git.")
+    @Step("Open TurkcellPasaj Step...")
     public void goToTurkcellPasaj() {
         driver.get(baseUrl);
     }
@@ -89,6 +92,7 @@ public class BasePage extends PageGenerator {
     }
 
     @Description("HızlıGiriş ile giriş yap.")
+    @Step("Login Step...")
     public void switchToFastLoginWindow_LoginProcess() throws InterruptedException {
         while (iterator.hasNext()) {
             String childWindow = iterator.next();

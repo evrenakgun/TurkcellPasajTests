@@ -1,5 +1,6 @@
 package pages;
 
+import base.BasePage;
 import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,37 +39,44 @@ public class HomePage extends BasePage {
 
     // ***** Best Sellers Methods *****
     @Description("Çok satanlar listesini görene kadar sayfayı aşağı kaydır.")
+    @Step("Scroll down until best sellers list is visible Step...")
     public void scrollDownUntilVisibleBestSellersFirstProductName() {
         scrollDownUntilElementVisible(bestSellersFirstProductName);
     }
 
     @Description("Çok satanlar listesindeki ilk ürünün adını getir.")
+    @Step("Get first product name of best sellers list Step...")
     public String getBestSellersFirstProductName() {
         return getText(bestSellersFirstProductName);
     }
 
     @Description("Çok satanlar listesindeki ilk ürünün fiyatını getir.")
+    @Step("Get first product price of best sellers list Step...")
     public String getBestSellersFirstProductPrice() {
         return getText(bestSellersFirstProductPrice).replaceAll("\\sTL.*$","");
     }
 
     @Description("Çok satanlar listesindeki ilk ürünün detaylarına git.")
+    @Step("Go to first product details of best sellers list Step...")
     public void clickToBestSellersFirstProduct() {
         clickWithJs(bestSellersFirstProduct);
     }
 
     // ***** Best Deals Methods *****
     @Description("En iyi teklifler listesini görene kadar sayfayı aşağı kaydır.")
+    @Step("Scroll down until best deals list is visible Step...")
     public void scrollDownUntilVisibleBestDealsFirstProductName() {
         scrollDownUntilElementVisible(bestDealsFirstProductName);
     }
 
     @Description("En iyi teklifler listesindeki ilk ürünün detaylarına git.")
+    @Step("Go to first product details of best deals list Step...")
     public void clickToBestDealsFirstProduct() {
         clickWithJs(bestDealsFirstProduct);
     }
 
-    @Description("PC-Tablet kategorisine git.")
+    @Description("PC-Tablet kategorisine tıkla.")
+    @Step("Click to 'Pc-Tablet' category Step...")
     public void clickToPcTabletCategory() {
         clickWithJs(pcTabletCategoryButton);
     }

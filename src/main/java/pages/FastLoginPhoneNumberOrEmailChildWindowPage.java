@@ -1,5 +1,6 @@
 package pages;
 
+import base.BasePage;
 import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,17 +23,20 @@ public class FastLoginPhoneNumberOrEmailChildWindowPage extends BasePage {
 
 
     // ***** Methods *****
-    @Description("Telefon numarasını yaz.")
+    @Description("Login Step: Telefon numarasını yaz.")
+    @Step("Login Step: Enter PhoneNumber: {0}, for method: {method} Step...")
     public void setPhoneNumberTextField(String phoneNumber) {
         setText(phoneNumberTextField, phoneNumber);
     }
 
-    @Description("HızlıGiriş Şifresi ile Gir seçeneğini işaretle.")
+    @Description("Login Step: HızlıGiriş Şifresi ile Gir seçeneğini işaretle.")
+    @Step("Login Step: Tick the Login with FastLogin password Step...")
     public void tickLoginWithFastLoginPasswordCheckBox() {
         clickWithJs(loginWithFastLoginPasswordCheckBox);
     }
 
     @Description("Giriş Yap butonuna tıkla.")
+    @Step("Login Step: Click login button Step...")
     public void clickLoginButton() {
         clickWithJs(loginButton);
     }

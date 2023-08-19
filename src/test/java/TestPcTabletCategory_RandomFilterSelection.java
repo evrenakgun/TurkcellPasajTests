@@ -1,3 +1,11 @@
+import base.BasePage;
+import base.BaseTest;
+import base.TextExecutionListener;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.*;
 
@@ -6,11 +14,15 @@ import java.util.Map;
 
 import static util.Constants.*;
 
+@Listeners(TextExecutionListener.class)
 public class TestPcTabletCategory_RandomFilterSelection extends BaseTest {
 
     Map<String, String> brandInMemory = new HashMap<>();
 
-    @Test
+    @Test(priority = 0, description = "Check product names and quantity after filter.")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Test Description: Filter test.")
+    @Story("Go to Pc-Tablet category select a brand then verify product names and quantity")
     public void testPcTabletCategory_RandomFilterSelection() {
         page.GetInstance(BasePage.class).goToTurkcellPasaj();
         page.GetInstance(HomePage.class).clickToPcTabletCategory();

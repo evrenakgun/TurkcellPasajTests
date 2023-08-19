@@ -1,5 +1,6 @@
 package pages;
 
+import base.BasePage;
 import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,16 +21,19 @@ public class FastLoginPasswordChildWindowPage extends BasePage {
 
     // ***** Methods *****
     @Description("Şifre alanı tıklanabilir olana kadar bekle.")
+    @Step("Wait until PasswordTextField clickable Step...")
     public void waitUntilPasswordTextFieldClickable() {
         isElementClickable(passwordTextField);
     }
 
     @Description("Şifreyi yaz.")
+    @Step("Login Step: Enter password: {0}, for method: {method} Step...")
     public void setPasswordTextField(String password) {
         setText(passwordTextField, password);
     }
 
     @Description("Tamam butonuna tıkla.")
+    @Step("Login Step: click OK button Step...")
     public void clickForwardButton() {
         clickWithJs(forwardButton);
     }

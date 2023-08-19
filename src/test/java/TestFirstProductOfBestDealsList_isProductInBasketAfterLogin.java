@@ -1,14 +1,26 @@
+import base.BasePage;
+import base.BaseTest;
+import base.TextExecutionListener;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Listeners(TextExecutionListener.class)
 public class TestFirstProductOfBestDealsList_isProductInBasketAfterLogin extends BaseTest {
 
     Map<String, String> productInMemory = new HashMap<>();
 
-    @Test
+    @Test(priority = 0, description = "Add to basket first product of best deals list then login and check basket for product is in the basket.")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Test Description: Add to basket test.")
+    @Story("Check basket after add to basket process with login test")
     public void testFirstProductOfBestDeals_isProductInBasketAfterLogin() throws InterruptedException {
         page.GetInstance(BasePage.class).goToTurkcellPasaj();
 

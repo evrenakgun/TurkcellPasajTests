@@ -1,5 +1,6 @@
 package pages;
 
+import base.BasePage;
 import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,21 +27,25 @@ public class MyBasketPage extends BasePage {
 
     // ***** Methods *****
     @Description("Sepetim sayfası görünür olana kadar bekle.")
+    @Step("Wait until 'My Basket' page is visible Step...")
     public void waitUntilMyBasketPageVisible() {
         isElementVisible(myBasketClass);
     }
 
     @Description("Sepetim sayfasında olduğunu kontrol et.")
+    @Step("Check for 'My Basket' text Step...")
     public void isCurrentPageBasketPage() {
         isTextsEquals(getText(myBasketText).trim(), "Sepetim");
     }
 
     @Description("Ürün isminin doğruluğunu kontrol et.")
+    @Step("Verify product name in basket Step...")
     public void verifyProductNameInBasket(String name) {
         isTextsContains(getText(productNameInBasket), name);
     }
 
     @Description("Ürün sayısının doğruluğunu kontrol et.")
+    @Step("Verify product quantity in basket Step...")
     public void verifyProductQuantityInBasket() {
         isTextsEquals(getText(productQuantity), "1");
     }

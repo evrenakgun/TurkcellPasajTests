@@ -1,5 +1,6 @@
 package pages;
 
+import base.BasePage;
 import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,26 +24,31 @@ public class FirstProductOfBestSellersListPage extends BasePage {
 
     // ***** Methods *****
     @Description("Ürünün adını getir.")
+    @Step("Get product name Step...")
     public void getProductName() {
         getText(productName);
     }
 
     @Description("Ürünün fiyatını getir.")
+    @Step("Get product price Step...")
     public void getProductPrice() {
         getText(productPrice);
     }
 
     @Description("Ürünlerin adını karşılaştır.")
+    @Step("Compare product names Step...")
     public void verifyBestSellersProductName(String name) {
         isTextsEquals(name, getText(productName));
     }
 
     @Description("Ürünlerin fiyatını karşılaştır.")
+    @Step("Compare product prices Step...")
     public void verifyBestSellersProductPrice(String price) {
         isTextsEquals(price, getText(productPrice));
     }
 
     @Description("Ürünün fiyatını görene kadar sayfayı aşağı kaydır.")
+    @Step("Scroll down until product price is visible Step...")
     public void scrollDownUntilProductPriceVisible() {
         scrollDownUntilElementVisible(productPrice);
     }

@@ -1,5 +1,6 @@
 package pages;
 
+import base.BasePage;
 import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,12 +21,14 @@ public class PcTabletCategoryBrandPage extends BasePage {
 
 
     // ***** Methods *****
-    @Description("Sayfadaki ürünlerin açılmasını bekle.")
+    @Description("Sayfadaki ürünlerin yüklenmesini bekle.")
+    @Step("Wait until all products are visible Step...")
     public void waitUntilProductsVisible() {
         isElementVisible(productNames);
     }
 
     @Description("Ürün adlarını içeren web elementleri listeye at.")
+    @Step("Add product web elements to a list Step...")
     public List<String> getWebElementListAsString() {
         List<WebElement> productNamesWebElementList = driver.findElements(By.cssSelector("[class='m-grid-col-4 product'] [class='m-p-pc__title']"));
         List<String> productNamesStringList = new ArrayList<>();
@@ -38,6 +41,7 @@ public class PcTabletCategoryBrandPage extends BasePage {
     }
 
     @Description("Filtreleme sonucu gelen ürünlerin isimlerini kontrol et.")
+    @Step("Verify product names after filter on Step...")
     public void verifyProductNamesAfterFilter(String name) {
         List<String> namesAfterFilter = getWebElementListAsString();
 
@@ -48,6 +52,7 @@ public class PcTabletCategoryBrandPage extends BasePage {
     }
 
     @Description("Filtreleme sonucu gelen ürün sayısını getir.")
+    @Step("Verify product quantity after filter on Step...")
     public void verifyQuantityOfProductsAfterFilter(String quantity) {
         List<String> quantityOfProductAfterFilter = getWebElementListAsString();
 
