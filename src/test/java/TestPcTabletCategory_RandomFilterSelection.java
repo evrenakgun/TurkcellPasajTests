@@ -1,10 +1,7 @@
 import base.BasePage;
 import base.BaseTest;
 import base.TextExecutionListener;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.*;
@@ -12,15 +9,17 @@ import pages.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import static util.Constants.*;
+import static util.BrandFilterConstants.BRAND_NAME;
 
 @Listeners(TextExecutionListener.class)
+@Epic("E2E Tests")
+@Feature("Filter Test")
 public class TestPcTabletCategory_RandomFilterSelection extends BaseTest {
 
     Map<String, String> brandInMemory = new HashMap<>();
 
     @Test(priority = 0, description = "Check product names and quantity after filter.")
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.NORMAL)
     @Description("Test Description: Filter test.")
     @Story("Go to Pc-Tablet category select a brand then verify product names and quantity")
     public void testPcTabletCategory_RandomFilterSelection() {

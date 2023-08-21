@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite"  parallel="classes" thread-count="2">
-    <test name="RandomFilterSelection">
+<suite name="Suite"  parallel="classes" thread-count="3">
+    <test name="Turkcell Pasaj Tests">
         <classes>
             <class name="TestPcTabletCategory_RandomFilterSelection"/>
-        </classes>
-    </test>
-    <test name="BestSellersFirstProduct_CheckNameCheckPrice">
-        <classes>
             <class name="TestFirstProductOfBestSellersList_CheckNameCheckPrice"/>
-        </classes>
-    </test>
-    <test name="BestDealsFirstProduct_isStillInBasket">
-        <classes>
             <class name="TestFirstProductOfBestDealsList_isProductInBasketAfterLogin"/>
         </classes>
     </test>

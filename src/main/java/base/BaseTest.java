@@ -1,5 +1,6 @@
 package base;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,6 +14,7 @@ public class BaseTest {
     public PageGenerator page;
 
     @BeforeMethod
+    @Step("Open chromedriver Step...")
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "C:/Users/evrenak/chromedriver.exe");
         driver = new ChromeDriver();
@@ -23,6 +25,7 @@ public class BaseTest {
     }
 
     @AfterMethod
+    @Step("Close chromedriver Step...")
     public void tearDown() {
         driver.quit();
     }

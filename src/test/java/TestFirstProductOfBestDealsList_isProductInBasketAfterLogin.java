@@ -1,10 +1,7 @@
 import base.BasePage;
 import base.BaseTest;
 import base.TextExecutionListener;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.*;
@@ -13,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Listeners(TextExecutionListener.class)
+@Epic("E2E Tests")
+@Feature("Add to Basket Test")
 public class TestFirstProductOfBestDealsList_isProductInBasketAfterLogin extends BaseTest {
 
     Map<String, String> productInMemory = new HashMap<>();

@@ -16,9 +16,11 @@ public class PcTabletCategoryBrandPage extends BasePage {
     }
 
     // ***** Web Elements *****
+    private By paginationList = By.cssSelector("[class='m-p-pagination__container'] li");
+    private By productsNameList = By.cssSelector("[class='m-grid-col-4 product'] [class='m-p-pc__title']");
+
     @FindBy(css = "[class='m-grid-col-4 product'] [class='m-p-pc__title']")
     public WebElement productNames;
-
 
     // ***** Methods *****
     @Description("Sayfadaki ürünlerin yüklenmesini bekle.")
@@ -30,7 +32,8 @@ public class PcTabletCategoryBrandPage extends BasePage {
     @Description("Ürün adlarını içeren web elementleri listeye at.")
     @Step("Add product web elements to a list Step...")
     public List<String> getWebElementListAsString() {
-        List<WebElement> productNamesWebElementList = driver.findElements(By.cssSelector("[class='m-grid-col-4 product'] [class='m-p-pc__title']"));
+        // Kaç sayfa olduğunu web elementle belirledik, bunları liste içine atacağız. Sayfalar içindeki ürünleri sayacağız.
+        List<WebElement> productNamesWebElementList = driver.findElements(productsNameList);
         List<String> productNamesStringList = new ArrayList<>();
 
         for (int i = 0; i < productNamesWebElementList.size(); i++) {
@@ -46,7 +49,6 @@ public class PcTabletCategoryBrandPage extends BasePage {
         List<String> namesAfterFilter = getWebElementListAsString();
 
         for (int i = 0; i < getWebElementListAsString().size(); i++) {
-            namesAfterFilter.add(getWebElementListAsString().get(i));
             isTextsContains(namesAfterFilter.get(i).replaceAll(" ", ""), name);
         }
     }
@@ -54,9 +56,24 @@ public class PcTabletCategoryBrandPage extends BasePage {
     @Description("Filtreleme sonucu gelen ürün sayısını getir.")
     @Step("Verify product quantity after filter on Step...")
     public void verifyQuantityOfProductsAfterFilter(String quantity) {
+        List<WebElement> pageNumbersWebElementList = driver.findElements(paginationList);
         List<String> quantityOfProductAfterFilter = getWebElementListAsString();
 
-        isTextsEquals(String.valueOf(quantityOfProductAfterFilter.size()), quantity);
+        int quantityInMemory = Integer.parseInt(quantity);
+        int currentPage = 1;
+        int lastPage = pageNumbersWebElementList.size();
+        int productsPerPage = quantityOfProductAfterFilter.size();
+
+        if (pageNumbersWebElementList.isEmpty()) {
+            isTextsEquals(String.valueOf(quantityOfProductAfterFilter.size()), quantity);
+        } else {
+            int subTotal = ((lastPage - currentPage) * productsPerPage);
+            int productQuantityOnLastPage = quantityInMemory - subTotal;
+            int totalProductQuantity = productQuantityOnLastPage + subTotal;
+
+            isTextsEquals(String.valueOf(totalProductQuantity), quantity);
+        }
+
     }
 
 }

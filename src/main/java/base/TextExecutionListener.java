@@ -13,14 +13,10 @@ public class TextExecutionListener extends BaseTest implements ITestListener {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
     }
 
+
     @Attachment(value = "Page screenshot", type = "image/png")
     public byte[] saveScreenshotPNG (WebDriver driver) {
-        return (byte[]) ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-    }
-
-    @Attachment(value = "{0}", type = "text/plain")
-    public static String saveTextLog (String message) {
-        return  message;
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
     @Override
@@ -38,13 +34,12 @@ public class TextExecutionListener extends BaseTest implements ITestListener {
         System.out.println("I am in onTestFailure method " + getTestMethodName(iTestResult) + " failed.");
 
         Object testClass = iTestResult.getInstance();
+        driver = ((BaseTest) testClass).driver;
 
         if (driver instanceof WebDriver) {
             System.out.println("Screenshot captured for test case: " + getTestMethodName(iTestResult));
             saveScreenshotPNG(driver);
         }
-
-        saveTextLog(getTestMethodName(iTestResult) + " failed and screenshot taken!");
     }
 
     @Override

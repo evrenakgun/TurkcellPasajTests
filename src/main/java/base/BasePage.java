@@ -14,8 +14,8 @@ import pages.FastLoginPhoneNumberOrEmailChildWindowPage;
 import java.util.Iterator;
 import java.util.Set;
 
-import static util.Constants.FASTLOGIN_PASSWORD;
-import static util.Constants.PHONE_NUMBER;
+import static util.LoginConstants.FASTLOGIN_PASSWORD;
+import static util.LoginConstants.PHONE_NUMBER;
 
 public class BasePage extends PageGenerator {
     PageGenerator page;
