@@ -12,7 +12,7 @@ import java.util.Map;
 import static util.BrandFilterConstants.BRAND_NAME;
 
 @Listeners(TextExecutionListener.class)
-@Epic("E2E Tests")
+@Epic("Mini Regression Tests")
 @Feature("Filter Test")
 public class TestPcTabletCategory_RandomFilterSelection extends BaseTest {
 

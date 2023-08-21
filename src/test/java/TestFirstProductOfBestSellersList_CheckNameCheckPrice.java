@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Listeners(TextExecutionListener.class)
-@Epic("E2E Tests")
+@Epic("Mini Regression Tests")
 @Feature("Product Name and Price Test")
 public class TestFirstProductOfBestSellersList_CheckNameCheckPrice extends BaseTest {
 
