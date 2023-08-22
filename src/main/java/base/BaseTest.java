@@ -1,5 +1,6 @@
 package base;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,6 +17,7 @@ public class BaseTest {
     @BeforeMethod
     @Step("Open chromedriver Step...")
     public void setUp() {
+        // WebDriverManager.chromedriver().setup();
         System.setProperty("webdriver.chrome.driver", "C:/Users/evrenak/chromedriver.exe");
         driver = new ChromeDriver();
         wait = new WebDriverWait(this.driver, 15);

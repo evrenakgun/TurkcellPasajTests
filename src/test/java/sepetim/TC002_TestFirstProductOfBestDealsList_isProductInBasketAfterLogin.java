@@ -1,3 +1,5 @@
+package sepetim;
+
 import base.BasePage;
 import base.BaseTest;
 import base.TextExecutionListener;
@@ -12,7 +14,7 @@ import java.util.Map;
 @Listeners(TextExecutionListener.class)
 @Epic("Mini Regression Tests")
 @Feature("Add to Basket Test")
-public class TestFirstProductOfBestDealsList_isProductInBasketAfterLogin extends BaseTest {
+public class TC002_TestFirstProductOfBestDealsList_isProductInBasketAfterLogin extends BaseTest {
 
     Map<String, String> productInMemory = new HashMap<>();
 

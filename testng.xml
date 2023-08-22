@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite"  parallel="classes" thread-count="3">
+<suite name="Regression Suite"  parallel="classes" thread-count="3">
     <test name="Turkcell Pasaj Tests">
         <classes>
-            <class name="TestPcTabletCategory_RandomFilterSelection"/>
-            <class name="TestFirstProductOfBestSellersList_CheckNameCheckPrice"/>
-            <class name="TestFirstProductOfBestDealsList_isProductInBasketAfterLogin"/>
+            <class name="filtreleme.TC003_TestPcTabletCategory_RandomFilterSelection"/>
+            <class name="urundetay.TC001_TestFirstProductOfBestSellersList_CheckNameCheckPrice"/>
+            <class name="sepetim.TC002_TestFirstProductOfBestDealsList_isProductInBasketAfterLogin"/>
         </classes>
     </test>
 </suite>

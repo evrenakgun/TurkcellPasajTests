@@ -1,3 +1,5 @@
+package filtreleme;
+
 import base.BasePage;
 import base.BaseTest;
 import base.TextExecutionListener;
@@ -14,7 +16,7 @@ import static util.BrandFilterConstants.BRAND_NAME;
 @Listeners(TextExecutionListener.class)
 @Epic("Mini Regression Tests")
 @Feature("Filter Test")
-public class TestPcTabletCategory_RandomFilterSelection extends BaseTest {
+public class TC003_TestPcTabletCategory_RandomFilterSelection extends BaseTest {
 
     Map<String, String> brandInMemory = new HashMap<>();
 

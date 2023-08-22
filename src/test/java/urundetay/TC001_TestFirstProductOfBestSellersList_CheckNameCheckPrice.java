@@ -1,3 +1,5 @@
+package urundetay;
+
 import base.BasePage;
 import base.BaseTest;
 import base.TextExecutionListener;
@@ -10,9 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Listeners(TextExecutionListener.class)
-@Epic("Mini Regression Tests")
+@Epic("Full Regression Tests")
 @Feature("Product Name and Price Test")
-public class TestFirstProductOfBestSellersList_CheckNameCheckPrice extends BaseTest {
+public class TC001_TestFirstProductOfBestSellersList_CheckNameCheckPrice extends BaseTest {
 
     Map<String, String> productInMemory = new HashMap<>();
 
