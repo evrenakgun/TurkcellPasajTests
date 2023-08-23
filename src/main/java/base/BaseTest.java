@@ -15,7 +15,7 @@ public class BaseTest {
     @Step("Open chromedriver Step...")
     public void setUp() {
         // WebDriverManager.chromedriver().setup();
-        System.setProperty("webdriver.chrome.driver", "C:/Users/evrenak/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 
