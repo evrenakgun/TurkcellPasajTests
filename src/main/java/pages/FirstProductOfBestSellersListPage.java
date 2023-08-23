@@ -18,9 +18,6 @@ public class FirstProductOfBestSellersListPage extends BasePage {
     @FindBy(css = "[class='a-price-radio-b price-radio-cash a-price-radio-b--advantage '] [class='a-price-val']")
     public WebElement productPrice;
 
-    @FindBy(css = "[class='a-price-radio-b price-radio-cash a-price-radio-b--advantage '] [class='a-price__currency']")
-    public WebElement productCurrency;
-
 
     // ***** Methods *****
     @Description("Ürünün adını getir.")
