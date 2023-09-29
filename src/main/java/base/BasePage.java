@@ -36,7 +36,6 @@ public class BasePage extends PageGenerator {
     public Set<String> windowHandles = driver.getWindowHandles();
     //Oluşturduğum Set'in içindeki pencerelere erişmesi için bir iterator oluşturduk.
     public Iterator<String> iterator = windowHandles.iterator();
-    public String titleFastLogin = "Giriş Yap";
 
 
     // ***** Methods *****
